@@ -1,3 +1,5 @@
 package api.championmastery.dto;
 
-public record NextSeasonMilestonesDto(Object requireGradeCounts, int rewardMarks, boolean bonus, RewardConfigDto rewardConfig){}
+import java.util.Map;
+
+public record NextSeasonMilestonesDto(Map<String, Integer> requireGradeCounts, int rewardMarks, boolean bonus, RewardConfigDto rewardConfig){}

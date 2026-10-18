@@ -1,5 +1,8 @@
 package api.champion;
 
-public interface ChampionAPI {
+import api.champion.dto.ChampionInfo;
+import api.data.Platform;
 
+public interface ChampionAPI {
+    ChampionInfo getChampionRotation(Platform platform);
 }

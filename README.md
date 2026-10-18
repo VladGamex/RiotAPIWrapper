@@ -31,23 +31,23 @@ Never hardcode your API key. Use an environment variable or a config file that i
 
 See for reference: [Riot Games API](https://developer.riotgames.com/)
 
-| Section             | Status  |
-|---------------------|---------|
-| ACCOUNT-V1          | done    |
-| CHAMPION-MASTERY-V4 | done    |
-| CHAMPION-V3         | planned |
-| CLASH-V1            | planned |
-| LEAGUE-EXP-V4       | planned |
-| LEAGUE-V4           | planned |
-| LOL-CHALLENGES-V1   | planned |
-| LOL-STATUS-V4       | planned |
-| MATCH-V5            | planned |
-| SPECTATOR-V5        | planned |
-| SUMMONER-V4         | planned |
-| TOURNAMENT-V5       | open    |
-| VALORANT-ENDPOINTS  | open    |
-| TFT-ENDPOINTS       | open    |
-| LOR-ENDPOINTS       | open    |
+| Section             | Status   |
+|---------------------|----------|
+| ACCOUNT-V1          | done     |
+| CHAMPION-MASTERY-V4 | done     |
+| CHAMPION-V3         | untested |
+| CLASH-V1            | untested |
+| LEAGUE-EXP-V4       | untested |
+| LEAGUE-V4           | untested |
+| LOL-CHALLENGES-V1   | planned  |
+| LOL-STATUS-V4       | planned  |
+| MATCH-V5            | planned  |
+| SPECTATOR-V5        | planned  |
+| SUMMONER-V4         | planned  |
+| TOURNAMENT-V5       | open     |
+| VALORANT-ENDPOINTS  | open     |
+| TFT-ENDPOINTS       | open     |
+| LOR-ENDPOINTS       | open     |
 
 - planned = next up
 - open = not started/decided

@@ -11,19 +11,24 @@ import api.lolstatus.LeagueStatusAPI;
 import api.match.MatchAPI;
 import api.spectator.SpectatorAPI;
 import api.summoner.SummonerAPI;
-import internal.AccountAPIImpl;
-import internal.ChampionMasteryAPIImpl;
-import internal.RiotHttp;
+import internal.*;
 
 public class RiotAPIClient implements RiotAPI {
-    private final RiotHttp riotHttp;
     private final AccountAPIImpl accountAPI;
     private final ChampionMasteryAPIImpl championMasteryAPI;
+    private final ChampionRotationImpl championAPI;
+    private final ClashAPIImpl clashAPI;
+    private final LeagueExpImpl leagueExpAPI;
+    private final LeagueAPIImpl leagueAPI;
 
     public RiotAPIClient(String apiKey) {
-        riotHttp = new RiotHttp(apiKey);
+        RiotHttp riotHttp = new RiotHttp(apiKey);
         accountAPI = new AccountAPIImpl(riotHttp);
         championMasteryAPI = new ChampionMasteryAPIImpl(riotHttp);
+        championAPI = new ChampionRotationImpl(riotHttp);
+        clashAPI = new ClashAPIImpl(riotHttp);
+        leagueExpAPI = new LeagueExpImpl(riotHttp);
+        leagueAPI = new LeagueAPIImpl(riotHttp);
     }
 
     @Override
@@ -38,22 +43,22 @@ public class RiotAPIClient implements RiotAPI {
 
     @Override
     public ChampionAPI champion() {
-        return null;
+        return championAPI;
     }
 
     @Override
     public ClashAPI clash() {
-        return null;
+        return clashAPI;
     }
 
     @Override
     public LeagueAPI league() {
-        return null;
+        return leagueAPI;
     }
 
     @Override
     public LeagueEXPAPI leagueExp() {
-        return null;
+        return leagueExpAPI;
     }
 
     @Override
