@@ -2,10 +2,10 @@ package api.account;
 
 import api.account.dto.AccountDto;
 import api.account.dto.AccountRegionDto;
-import api.data.RegionalRouting;
+import api.data.Region;
 
 public interface AccountAPI {
-    AccountDto getAccountByRiotID(RegionalRouting region, String gameName, String tagLine);
-    AccountDto getAccountByPuuid(RegionalRouting region, String puuid);
-    AccountRegionDto getActiveRegion(RegionalRouting  region, String game, String puuid);
+    AccountDto getAccountByRiotID(Region region, String gameName, String tagLine);
+    AccountDto getAccountByPuuid(Region region, String puuid);
+    AccountRegionDto getActiveRegion(Region region, String game, String puuid);
 }

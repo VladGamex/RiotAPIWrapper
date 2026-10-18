@@ -3,7 +3,7 @@ package internal;
 import api.account.AccountAPI;
 import api.account.dto.AccountDto;
 import api.account.dto.AccountRegionDto;
-import api.data.RegionalRouting;
+import api.data.Region;
 
 public class AccountAPIImpl implements AccountAPI {
     private final RiotHttp riotHttp;
@@ -14,17 +14,17 @@ public class AccountAPIImpl implements AccountAPI {
     }
 
     @Override
-    public AccountDto getAccountByRiotID(RegionalRouting region, String gameName, String tagLine) {
+    public AccountDto getAccountByRiotID(Region region, String gameName, String tagLine) {
         return riotHttp.get(region.getHost(), prefix + "accounts/by-riot-id/" + gameName + "/" + tagLine, AccountDto.class);
     }
 
     @Override
-    public AccountDto getAccountByPuuid(RegionalRouting region, String puuid) {
+    public AccountDto getAccountByPuuid(Region region, String puuid) {
         return riotHttp.get(region.getHost(), prefix + "accounts/by-puuid/" + puuid, AccountDto.class);
     }
 
     @Override
-    public AccountRegionDto getActiveRegion(RegionalRouting region, String game, String puuid) {
+    public AccountRegionDto getActiveRegion(Region region, String game, String puuid) {
         return riotHttp.get(region.getHost(), prefix + "region/by-game/" + game + "/by-puuid/" + puuid, AccountRegionDto.class);
     }
 }
