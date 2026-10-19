@@ -5,7 +5,6 @@ import api.champion.ChampionAPI;
 import api.championmastery.ChampionMasteryAPI;
 import api.clash.ClashAPI;
 import api.league.LeagueAPI;
-import api.leagueexp.LeagueEXPAPI;
 import api.lolchallenges.LeagueChallengesAPI;
 import api.lolstatus.LeagueStatusAPI;
 import api.match.MatchAPI;
@@ -18,8 +17,8 @@ public class RiotAPIClient implements RiotAPI {
     private final ChampionMasteryAPIImpl championMasteryAPI;
     private final ChampionRotationImpl championAPI;
     private final ClashAPIImpl clashAPI;
-    private final LeagueExpImpl leagueExpAPI;
     private final LeagueAPIImpl leagueAPI;
+    private final LeagueStatusAPIImpl leagueStatusAPI;
 
     public RiotAPIClient(String apiKey) {
         RiotHttp riotHttp = new RiotHttp(apiKey);
@@ -27,8 +26,8 @@ public class RiotAPIClient implements RiotAPI {
         championMasteryAPI = new ChampionMasteryAPIImpl(riotHttp);
         championAPI = new ChampionRotationImpl(riotHttp);
         clashAPI = new ClashAPIImpl(riotHttp);
-        leagueExpAPI = new LeagueExpImpl(riotHttp);
         leagueAPI = new LeagueAPIImpl(riotHttp);
+        leagueStatusAPI = new LeagueStatusAPIImpl(riotHttp);
     }
 
     @Override
@@ -57,18 +56,13 @@ public class RiotAPIClient implements RiotAPI {
     }
 
     @Override
-    public LeagueEXPAPI leagueExp() {
-        return leagueExpAPI;
-    }
-
-    @Override
     public LeagueChallengesAPI leagueChallenges() {
         return null;
     }
 
     @Override
     public LeagueStatusAPI leagueStatus() {
-        return null;
+        return leagueStatusAPI;
     }
 
     @Override

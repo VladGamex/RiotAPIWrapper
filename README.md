@@ -35,12 +35,11 @@ See for reference: [Riot Games API](https://developer.riotgames.com/)
 |---------------------|----------|
 | ACCOUNT-V1          | done     |
 | CHAMPION-MASTERY-V4 | done     |
-| CHAMPION-V3         | untested |
+| CHAMPION-V3         | done     |
 | CLASH-V1            | untested |
-| LEAGUE-EXP-V4       | untested |
-| LEAGUE-V4           | untested |
+| LEAGUE-V4           | done     |
 | LOL-CHALLENGES-V1   | planned  |
-| LOL-STATUS-V4       | planned  |
+| LOL-STATUS-V4       | done     |
 | MATCH-V5            | planned  |
 | SPECTATOR-V5        | planned  |
 | SUMMONER-V4         | planned  |

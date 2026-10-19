@@ -1,9 +1,12 @@
 package internal;
 
+import api.data.Division;
 import api.data.Platform;
+import api.data.Queue;
+import api.data.Tier;
 import api.league.LeagueAPI;
 import api.league.dto.LeagueListDTO;
-import api.leagueexp.dto.LeagueEntryDTO;
+import api.league.dto.LeagueEntryDTO;
 import com.fasterxml.jackson.core.type.TypeReference;
 
 import java.util.Set;
@@ -17,7 +20,7 @@ public class LeagueAPIImpl implements LeagueAPI {
     }
 
     @Override
-    public LeagueListDTO getChallengerLeague(Platform platform, String queue) {
+    public LeagueListDTO getChallengerLeague(Platform platform, Queue queue) {
         return riotHttp.get(
                 platform.getPlatform(),
                 prefix + "challengerleagues/by-queue/" + queue,
@@ -35,7 +38,7 @@ public class LeagueAPIImpl implements LeagueAPI {
     }
 
     @Override
-    public Set<LeagueEntryDTO> getAllLeagueEntries(Platform platform, String division, String tier, String queue) {
+    public Set<LeagueEntryDTO> getAllLeagueEntries(Platform platform, Queue queue, Tier tier, Division division) {
         return riotHttp.get(
                 platform.getPlatform(),
                 prefix + "entries/" + queue + "/" + tier + "/" + division,
@@ -44,7 +47,7 @@ public class LeagueAPIImpl implements LeagueAPI {
     }
 
     @Override
-    public Set<LeagueEntryDTO> getAllLeagueEntries(Platform platform, String division, String tier, String queue, int page) {
+    public Set<LeagueEntryDTO> getAllLeagueEntries(Platform platform, Queue queue, Tier tier, Division division, int page) {
         return riotHttp.get(
                 platform.getPlatform(),
                 prefix + "entries/" + queue + "/" + tier + "/" + division + "?page=" + page,
@@ -53,7 +56,7 @@ public class LeagueAPIImpl implements LeagueAPI {
     }
 
     @Override
-    public LeagueListDTO getGrandMasterLeague(Platform platform, String queue) {
+    public LeagueListDTO getGrandMasterLeague(Platform platform, Queue queue) {
         return riotHttp.get(
                 platform.getPlatform(),
                 prefix + "grandmasterleagues/by-queue/" + queue,
@@ -62,7 +65,7 @@ public class LeagueAPIImpl implements LeagueAPI {
     }
 
     @Override
-    public LeagueListDTO getMasterLeague(Platform platform, String queue) {
+    public LeagueListDTO getMasterLeague(Platform platform, Queue queue) {
         return riotHttp.get(
                 platform.getPlatform(),
                 prefix + "masterleagues/by-queue/" + queue,
