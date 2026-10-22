@@ -40,7 +40,7 @@ See for reference: [Riot Games API](https://developer.riotgames.com/)
 | LEAGUE-V4           | done     |
 | LOL-CHALLENGES-V1   | untested |
 | LOL-STATUS-V4       | done     |
-| MATCH-V5            | planned  |
+| MATCH-V5            | untested |
 | SPECTATOR-V5        | planned  |
 | SUMMONER-V4         | planned  |
 | TOURNAMENT-V5       | open     |
