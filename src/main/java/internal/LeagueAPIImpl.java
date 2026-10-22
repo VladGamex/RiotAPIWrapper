@@ -24,8 +24,7 @@ public class LeagueAPIImpl implements LeagueAPI {
         return riotHttp.get(
                 platform.getPlatform(),
                 prefix + "challengerleagues/by-queue/" + queue,
-                LeagueListDTO.class,
-                null
+                LeagueListDTO.class
         );
     }
 
@@ -34,8 +33,7 @@ public class LeagueAPIImpl implements LeagueAPI {
         return riotHttp.get(
                 platform.getPlatform(),
                 prefix + "entries/by-puuid/" + puuid,
-                new TypeReference<>() {},
-                null
+                new TypeReference<>() {}
         );
     }
 
@@ -44,8 +42,7 @@ public class LeagueAPIImpl implements LeagueAPI {
         return riotHttp.get(
                 platform.getPlatform(),
                 prefix + "entries/" + queue + "/" + tier + "/" + division,
-                new TypeReference<>() {},
-                null
+                new TypeReference<>() {}
         );
     }
 
@@ -54,8 +51,7 @@ public class LeagueAPIImpl implements LeagueAPI {
         return riotHttp.get(
                 platform.getPlatform(),
                 prefix + "entries/" + queue + "/" + tier + "/" + division + "?page=" + page,
-                new TypeReference<>() {},
-                null
+                new TypeReference<>() {}
         );
     }
 
@@ -64,8 +60,7 @@ public class LeagueAPIImpl implements LeagueAPI {
         return riotHttp.get(
                 platform.getPlatform(),
                 prefix + "grandmasterleagues/by-queue/" + queue,
-                LeagueListDTO.class,
-                null
+                LeagueListDTO.class
         );
     }
 
@@ -74,8 +69,7 @@ public class LeagueAPIImpl implements LeagueAPI {
         return riotHttp.get(
                 platform.getPlatform(),
                 prefix + "masterleagues/by-queue/" + queue,
-                LeagueListDTO.class,
-                null
+                LeagueListDTO.class
         );
     }
 }

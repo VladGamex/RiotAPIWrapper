@@ -20,8 +20,7 @@ public class ChampionMasteryAPIImpl implements ChampionMasteryAPI {
         return riotHttp.get(
                 region.getPlatform(),
                 prefix + "champion-masteries/by-puuid/" + encryptedPUUID,
-                new TypeReference<>() {},
-                null);
+                new TypeReference<>() {});
     }
 
     @Override
@@ -29,8 +28,7 @@ public class ChampionMasteryAPIImpl implements ChampionMasteryAPI {
         return riotHttp.get(
                 region.getPlatform(),
                 prefix + "champion-masteries/by-puuid/" + encryptedPUUID + "/by-champion/" + championId,
-                ChampionMasteryDto.class,
-                null);
+                ChampionMasteryDto.class);
     }
 
     @Override
@@ -38,8 +36,7 @@ public class ChampionMasteryAPIImpl implements ChampionMasteryAPI {
         return riotHttp.get(
                 region.getPlatform(),
                 prefix + "champion-masteries/by-puuid/" + encryptedPUUID + "/top",
-                new TypeReference<>() {},
-                null);
+                new TypeReference<>() {});
     }
 
     @Override
@@ -47,8 +44,7 @@ public class ChampionMasteryAPIImpl implements ChampionMasteryAPI {
         return riotHttp.get(
                 region.getPlatform(),
                 prefix + "champion-masteries/by-puuid/" + encryptedPUUID + "/top?count=" + count,
-                new TypeReference<>() {},
-                null);
+                new TypeReference<>() {});
     }
 
     @Override
@@ -56,7 +52,6 @@ public class ChampionMasteryAPIImpl implements ChampionMasteryAPI {
         return riotHttp.get(
                 region.getPlatform(),
                 prefix + "/scores/by-puuid/" + encryptedPUUID,
-                Integer.class,
-                null);
+                Integer.class);
     }
 }

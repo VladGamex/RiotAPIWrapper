@@ -18,8 +18,7 @@ public class AccountAPIImpl implements AccountAPI {
         return riotHttp.get(
                 region.getHost(),
                 prefix + "accounts/by-riot-id/" + gameName + "/" + tagLine,
-                AccountDto.class,
-                null);
+                AccountDto.class);
     }
 
     @Override
@@ -27,8 +26,7 @@ public class AccountAPIImpl implements AccountAPI {
         return riotHttp.get(
                 region.getHost(),
                 prefix + "accounts/by-puuid/" + puuid,
-                AccountDto.class,
-                null);
+                AccountDto.class);
     }
 
     @Override
@@ -36,7 +34,6 @@ public class AccountAPIImpl implements AccountAPI {
         return riotHttp.get(
                 region.getHost(),
                 prefix + "region/by-game/" + game + "/by-puuid/" + puuid,
-                AccountRegionDto.class,
-                null);
+                AccountRegionDto.class);
     }
 }

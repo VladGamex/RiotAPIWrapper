@@ -24,8 +24,7 @@ public class ClashAPIImpl implements ClashAPI {
         return riotHttp.get(
                 platform.getPlatform(),
                 prefix + "players/by-puuid/" + puuid,
-                new TypeReference<>() {},
-                null);
+                new TypeReference<>() {});
     }
 
     @Override
@@ -33,8 +32,7 @@ public class ClashAPIImpl implements ClashAPI {
         return riotHttp.get(
                 platform.getPlatform(),
                 prefix + "teams/" + teamId,
-                TeamDto.class,
-                null);
+                TeamDto.class);
     }
 
     @Override
@@ -42,8 +40,7 @@ public class ClashAPIImpl implements ClashAPI {
         return riotHttp.get(
                 platform.getPlatform(),
                 prefix + tournamentPrefix,
-                new TypeReference<>() {},
-                null);
+                new TypeReference<>() {});
     }
 
     @Override
@@ -51,8 +48,7 @@ public class ClashAPIImpl implements ClashAPI {
         return riotHttp.get(
                 platform.getPlatform(),
                 prefix + tournamentPrefix + "by-team/" + teamId,
-                TournamentDto.class,
-                null);
+                TournamentDto.class);
     }
 
     @Override
@@ -60,7 +56,6 @@ public class ClashAPIImpl implements ClashAPI {
         return riotHttp.get(
                 platform.getPlatform(),
                 prefix + tournamentPrefix + tournamentId,
-                TournamentDto.class,
-                null);
+                TournamentDto.class);
     }
 }

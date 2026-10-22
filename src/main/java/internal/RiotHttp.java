@@ -28,12 +28,15 @@ public class RiotHttp {
         mapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
     }
 
+    public <T> T get(String host, String path, Class<T> type){
+        return parse(send(host, path, Map.of()), mapper.constructType(type));
+    }
     public <T> T get(String host, String path, Class<T> type, HashMap<String, String> headers){
         return parse(send(host, path, headers), mapper.constructType(type));
     }
 
-    public <T> T get(String host, String path, TypeReference<T> type, HashMap<String, String> headers) {
-        return parse(send(host, path, headers), mapper.constructType(type));
+    public <T> T get(String host, String path, TypeReference<T> type) {
+        return parse(send(host, path, Map.of()), mapper.constructType(type));
     }
 
     private <T> T parse(String response, JavaType type) {
@@ -44,7 +47,7 @@ public class RiotHttp {
         }
     }
 
-    private String send(String host, String path, HashMap<String, String> headers) {
+    private String send(String host, String path, Map<String, String> headers) {
         HttpRequest.Builder requestBuilder = HttpRequest.newBuilder()
                 .uri(URI.create("https://" + host + path))
                 .header("X-Riot-Token", apiKey)

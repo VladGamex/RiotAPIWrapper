@@ -19,8 +19,7 @@ public class SummonerAPIImpl implements SummonerAPI {
         return riotHttp.get(
                 platform.getPlatform(),
                 prefix + "/by-puuid/" + puuid,
-                SummonerDTO.class,
-                null
+                SummonerDTO.class
         );
     }
 
