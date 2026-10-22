@@ -21,6 +21,7 @@ public class RiotAPIClient implements RiotAPI {
     private final LeagueStatusAPIImpl leagueStatusAPI;
     private final ChallengesImpl challengesAPI;
     private final MatchAPIImpl matchAPI;
+    private final SpectatorAPIImpl spectatorAPI;
 
     public RiotAPIClient(String apiKey) {
         RiotHttp riotHttp = new RiotHttp(apiKey);
@@ -32,6 +33,7 @@ public class RiotAPIClient implements RiotAPI {
         leagueStatusAPI = new LeagueStatusAPIImpl(riotHttp);
         challengesAPI = new ChallengesImpl(riotHttp);
         matchAPI = new MatchAPIImpl(riotHttp);
+        spectatorAPI = new SpectatorAPIImpl(riotHttp);
     }
 
     @Override
@@ -76,7 +78,7 @@ public class RiotAPIClient implements RiotAPI {
 
     @Override
     public SpectatorAPI spectator() {
-        return null;
+        return spectatorAPI;
     }
 
     @Override
