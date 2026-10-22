@@ -16,7 +16,8 @@ public class SpectatorAPIImpl implements SpectatorAPI {
         return riotHttp.get(
                 platform.getPlatform(),
                 "/lol/spectator/v5/active-games/by-summoner/" + puuid,
-                CurrentGameInfo.class
+                CurrentGameInfo.class,
+                null
         );
     }
 }

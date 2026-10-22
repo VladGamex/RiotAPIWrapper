@@ -14,6 +14,6 @@ public class LeagueStatusAPIImpl implements LeagueStatusAPI {
 
     @Override
     public PlatformDataDto getLeagueStatus(Platform platform) {
-        return riotHttp.get(platform.getPlatform(), "/lol/status/v4/platform-data", PlatformDataDto.class);
+        return riotHttp.get(platform.getPlatform(), "/lol/status/v4/platform-data", PlatformDataDto.class, null);
     }
 }

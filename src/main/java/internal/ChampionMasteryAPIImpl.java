@@ -17,39 +17,46 @@ public class ChampionMasteryAPIImpl implements ChampionMasteryAPI {
 
     @Override
     public List<ChampionMasteryDto> getMasteryPointsByPuuid(Platform region, String encryptedPUUID) {
-        return riotHttp.get(region.getPlatform(),
+        return riotHttp.get(
+                region.getPlatform(),
                 prefix + "champion-masteries/by-puuid/" + encryptedPUUID,
-                new TypeReference<>() {
-        });
+                new TypeReference<>() {},
+                null);
     }
 
     @Override
     public ChampionMasteryDto getMasteryPointsOnChampion(Platform region, String encryptedPUUID, int championId) {
-        return riotHttp.get(region.getPlatform(),
+        return riotHttp.get(
+                region.getPlatform(),
                 prefix + "champion-masteries/by-puuid/" + encryptedPUUID + "/by-champion/" + championId,
-                ChampionMasteryDto.class);
+                ChampionMasteryDto.class,
+                null);
     }
 
     @Override
     public List<ChampionMasteryDto> getTopMasteryEntries(Platform region, String encryptedPUUID) {
-        return riotHttp.get(region.getPlatform(),
+        return riotHttp.get(
+                region.getPlatform(),
                 prefix + "champion-masteries/by-puuid/" + encryptedPUUID + "/top",
-                new TypeReference<>() {
-                });
+                new TypeReference<>() {},
+                null);
     }
 
     @Override
     public List<ChampionMasteryDto> getTopMasteryEntries(Platform region, String encryptedPUUID, int count) {
-        return riotHttp.get(region.getPlatform(),
+        return riotHttp.get(
+                region.getPlatform(),
                 prefix + "champion-masteries/by-puuid/" + encryptedPUUID + "/top?count=" + count,
-                new TypeReference<>() {
-                });
+                new TypeReference<>() {},
+                null);
     }
 
     @Override
     public int getSumOfMasteryPoints(Platform region, String encryptedPUUID) {
-        return riotHttp.get(region.getPlatform(),
+        return riotHttp.get(
+                region.getPlatform(),
                 prefix + "/scores/by-puuid/" + encryptedPUUID,
-                Integer.class);
+                Integer.class,
+                null);
     }
 }

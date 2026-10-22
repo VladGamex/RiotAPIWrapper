@@ -13,6 +13,6 @@ public class ChampionRotationImpl implements ChampionAPI {
 
     @Override
     public ChampionInfo getChampionRotation(Platform platform) {
-        return riotHttp.get(platform.getPlatform(), "/lol/platform/v3/champion-rotations", ChampionInfo.class);
+        return riotHttp.get(platform.getPlatform(), "/lol/platform/v3/champion-rotations", ChampionInfo.class, null);
     }
 }

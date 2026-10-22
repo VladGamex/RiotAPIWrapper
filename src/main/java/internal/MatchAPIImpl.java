@@ -24,7 +24,8 @@ public class MatchAPIImpl implements MatchAPI {
         return riotHttp.get(
                 region.getHost(),
                 prefix + "/by-puuid/" + puuid + "/ids",
-                new TypeReference<>() {}
+                new TypeReference<>() {},
+                null
         );
     }
 
@@ -33,7 +34,8 @@ public class MatchAPIImpl implements MatchAPI {
         return riotHttp.get(
                 region.getHost(),
                 prefix + "/by-puuid/" + puuid + "/ids" + builder.build(),
-                new TypeReference<>() {}
+                new TypeReference<>() {},
+                null
         );
     }
 
@@ -42,7 +44,8 @@ public class MatchAPIImpl implements MatchAPI {
         return riotHttp.get(
                 region.getHost(),
                 prefix + "by-puuid/" + puuid + "/replays",
-                ReplayDTO.class
+                ReplayDTO.class,
+                null
         );
     }
 
@@ -51,7 +54,8 @@ public class MatchAPIImpl implements MatchAPI {
         return riotHttp.get(
                 region.getHost(),
                 prefix + "/" + matchId,
-                MatchDto.class
+                MatchDto.class,
+                null
         );
     }
 
@@ -60,7 +64,8 @@ public class MatchAPIImpl implements MatchAPI {
         return riotHttp.get(
                 region.getHost(),
                 prefix + "/" + matchId + "/timeline",
-                TimelineDto.class
+                TimelineDto.class,
+                null
         );
     }
 }

@@ -15,16 +15,28 @@ public class AccountAPIImpl implements AccountAPI {
 
     @Override
     public AccountDto getAccountByRiotID(Region region, String gameName, String tagLine) {
-        return riotHttp.get(region.getHost(), prefix + "accounts/by-riot-id/" + gameName + "/" + tagLine, AccountDto.class);
+        return riotHttp.get(
+                region.getHost(),
+                prefix + "accounts/by-riot-id/" + gameName + "/" + tagLine,
+                AccountDto.class,
+                null);
     }
 
     @Override
     public AccountDto getAccountByPuuid(Region region, String puuid) {
-        return riotHttp.get(region.getHost(), prefix + "accounts/by-puuid/" + puuid, AccountDto.class);
+        return riotHttp.get(
+                region.getHost(),
+                prefix + "accounts/by-puuid/" + puuid,
+                AccountDto.class,
+                null);
     }
 
     @Override
     public AccountRegionDto getActiveRegion(Region region, String game, String puuid) {
-        return riotHttp.get(region.getHost(), prefix + "region/by-game/" + game + "/by-puuid/" + puuid, AccountRegionDto.class);
+        return riotHttp.get(
+                region.getHost(),
+                prefix + "region/by-game/" + game + "/by-puuid/" + puuid,
+                AccountRegionDto.class,
+                null);
     }
 }

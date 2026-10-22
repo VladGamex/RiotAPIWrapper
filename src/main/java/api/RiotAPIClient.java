@@ -13,15 +13,16 @@ import api.summoner.SummonerAPI;
 import internal.*;
 
 public class RiotAPIClient implements RiotAPI {
-    private final AccountAPIImpl accountAPI;
-    private final ChampionMasteryAPIImpl championMasteryAPI;
-    private final ChampionRotationImpl championAPI;
-    private final ClashAPIImpl clashAPI;
-    private final LeagueAPIImpl leagueAPI;
-    private final LeagueStatusAPIImpl leagueStatusAPI;
-    private final ChallengesImpl challengesAPI;
-    private final MatchAPIImpl matchAPI;
-    private final SpectatorAPIImpl spectatorAPI;
+    private final AccountAPI accountAPI;
+    private final ChampionMasteryAPI championMasteryAPI;
+    private final ChampionAPI championAPI;
+    private final ClashAPI clashAPI;
+    private final LeagueAPI leagueAPI;
+    private final LeagueStatusAPI leagueStatusAPI;
+    private final LeagueChallengesAPI challengesAPI;
+    private final MatchAPI matchAPI;
+    private final SpectatorAPI spectatorAPI;
+    private final SummonerAPI summonerAPI;
 
     public RiotAPIClient(String apiKey) {
         RiotHttp riotHttp = new RiotHttp(apiKey);
@@ -34,6 +35,7 @@ public class RiotAPIClient implements RiotAPI {
         challengesAPI = new ChallengesImpl(riotHttp);
         matchAPI = new MatchAPIImpl(riotHttp);
         spectatorAPI = new SpectatorAPIImpl(riotHttp);
+        summonerAPI = new SummonerAPIImpl(riotHttp);
     }
 
     @Override
@@ -83,6 +85,6 @@ public class RiotAPIClient implements RiotAPI {
 
     @Override
     public SummonerAPI summoner() {
-        return null;
+        return summonerAPI;
     }
 }

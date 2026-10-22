@@ -21,26 +21,46 @@ public class ClashAPIImpl implements ClashAPI {
 
     @Override
     public List<PlayerDto> getPlayersByPuuid(Platform platform, String puuid) {
-        return riotHttp.get(platform.getPlatform(), prefix + "players/by-puuid/" + puuid, new TypeReference<List<PlayerDto>>() {});
+        return riotHttp.get(
+                platform.getPlatform(),
+                prefix + "players/by-puuid/" + puuid,
+                new TypeReference<>() {},
+                null);
     }
 
     @Override
     public TeamDto getTeamById(Platform platform, String teamId) {
-        return riotHttp.get(platform.getPlatform(), prefix + "teams/" + teamId, TeamDto.class);
+        return riotHttp.get(
+                platform.getPlatform(),
+                prefix + "teams/" + teamId,
+                TeamDto.class,
+                null);
     }
 
     @Override
     public List<TournamentDto> getTournaments(Platform platform) {
-        return riotHttp.get(platform.getPlatform(), prefix + tournamentPrefix, new TypeReference<List<TournamentDto>>() {});
+        return riotHttp.get(
+                platform.getPlatform(),
+                prefix + tournamentPrefix,
+                new TypeReference<>() {},
+                null);
     }
 
     @Override
     public TournamentDto getTournamentByTeamId(Platform platform, String teamId) {
-        return riotHttp.get(platform.getPlatform(), prefix + tournamentPrefix + "by-team/" + teamId, TournamentDto.class);
+        return riotHttp.get(
+                platform.getPlatform(),
+                prefix + tournamentPrefix + "by-team/" + teamId,
+                TournamentDto.class,
+                null);
     }
 
     @Override
     public TournamentDto getTournamentById(Platform platform, String tournamentId) {
-        return riotHttp.get(platform.getPlatform(), prefix + tournamentPrefix + tournamentId, TournamentDto.class);
+        return riotHttp.get(
+                platform.getPlatform(),
+                prefix + tournamentPrefix + tournamentId,
+                TournamentDto.class,
+                null);
     }
 }

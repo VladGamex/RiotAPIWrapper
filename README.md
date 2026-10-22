@@ -42,11 +42,12 @@ See for reference: [Riot Games API](https://developer.riotgames.com/)
 | LOL-STATUS-V4       | done     |
 | MATCH-V5            | untested |
 | SPECTATOR-V5        | untested |
-| SUMMONER-V4         | planned  |
+| SUMMONER-V4         | untested |
 | TOURNAMENT-V5       | open     |
 | VALORANT-ENDPOINTS  | open     |
 | TFT-ENDPOINTS       | open     |
 | LOR-ENDPOINTS       | open     |
+| EXCEPTION-HANDLING  | planned  |
 
 - planned = next up
 - open = not started/decided

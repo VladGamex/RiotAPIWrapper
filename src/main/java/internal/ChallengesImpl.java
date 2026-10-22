@@ -25,7 +25,8 @@ public class ChallengesImpl implements LeagueChallengesAPI {
         return riotHttp.get(
                 platform.getPlatform(),
                 prefix + "/config",
-                new TypeReference<>() {}
+                new TypeReference<>() {},
+                null
         );
     }
 
@@ -34,7 +35,8 @@ public class ChallengesImpl implements LeagueChallengesAPI {
         return riotHttp.get(
                 platform.getPlatform(),
                 prefix + "/percentiles",
-                new TypeReference<>() {}
+                new TypeReference<>() {},
+                null
         );
     }
 
@@ -43,7 +45,8 @@ public class ChallengesImpl implements LeagueChallengesAPI {
         return riotHttp.get(
                 platform.getPlatform(),
                 prefix + "/" + challengeId + "/config",
-                ChallengeConfigInfoDto.class
+                ChallengeConfigInfoDto.class,
+                null
         );
     }
 
@@ -52,7 +55,8 @@ public class ChallengesImpl implements LeagueChallengesAPI {
         return riotHttp.get(
                 platform.getPlatform(),
                 prefix + "/" + challengeId + "/leaderboards/by-level/" + level,
-                new TypeReference<>() {}
+                new TypeReference<>() {},
+                null
         );
     }
 
@@ -61,7 +65,8 @@ public class ChallengesImpl implements LeagueChallengesAPI {
         return riotHttp.get(
                 platform.getPlatform(),
                 prefix + "/" + challengeId + "/leaderboards/by-level/" + level + "?limit=" + limit,
-                new TypeReference<>() {}
+                new TypeReference<>() {},
+                null
         );
     }
 
@@ -70,7 +75,8 @@ public class ChallengesImpl implements LeagueChallengesAPI {
         return riotHttp.get(
                 platform.getPlatform(),
                 prefix + "/" + challengeId + "/percentiles",
-                new TypeReference<>() {}
+                new TypeReference<>() {},
+                null
         );
     }
 
@@ -79,7 +85,8 @@ public class ChallengesImpl implements LeagueChallengesAPI {
         return riotHttp.get(
                 platform.getPlatform(),
                 "/lol/challenges/v1/player-data/" + puuid,
-                PlayerInfoDto.class
+                PlayerInfoDto.class,
+                null
         );
     }
 }
