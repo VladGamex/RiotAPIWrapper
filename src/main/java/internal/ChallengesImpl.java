@@ -2,6 +2,7 @@ package internal;
 
 import api.data.Platform;
 import api.data.Tier;
+import api.lolchallenges.Level;
 import api.lolchallenges.LeagueChallengesAPI;
 import api.lolchallenges.dto.ApexPlayerInfoDto;
 import api.lolchallenges.dto.ChallengeConfigInfoDto;
@@ -30,7 +31,7 @@ public class ChallengesImpl implements LeagueChallengesAPI {
     }
 
     @Override
-    public Map<Long, Map<Integer, Map<String, Double>>> getPercentiles(Platform platform) {
+    public Map<String, Map<String, Float>> getPercentiles(Platform platform) {
         return riotHttp.get(
                 platform.getPlatform(),
                 prefix + "/percentiles",
@@ -48,7 +49,11 @@ public class ChallengesImpl implements LeagueChallengesAPI {
     }
 
     @Override
-    public List<ApexPlayerInfoDto> getTopPlayers(Platform platform, long challengeId, String level) {
+    public List<ApexPlayerInfoDto> getTopPlayers(Platform platform, long challengeId, Level level) {
+        if(!level.equals(Level.MASTER) || !level.equals(Level.GRANDMASTER) || !level.equals(Level.CHALLENGER)) {
+            return null; // TODO: EXCEPTIONHANDLING
+        }
+
         return riotHttp.get(
                 platform.getPlatform(),
                 prefix + "/" + challengeId + "/leaderboards/by-level/" + level,
@@ -57,7 +62,10 @@ public class ChallengesImpl implements LeagueChallengesAPI {
     }
 
     @Override
-    public List<ApexPlayerInfoDto> getTopPlayers(Platform platform, long challengeId, String level, int limit) {
+    public List<ApexPlayerInfoDto> getTopPlayers(Platform platform, long challengeId, Level level, int limit) {
+        if(!level.equals(Level.MASTER) || !level.equals(Level.GRANDMASTER) || !level.equals(Level.CHALLENGER)) {
+            return null; // TODO: EXCEPTIONHANDLING
+        }
         return riotHttp.get(
                 platform.getPlatform(),
                 prefix + "/" + challengeId + "/leaderboards/by-level/" + level + "?limit=" + limit,
@@ -66,7 +74,7 @@ public class ChallengesImpl implements LeagueChallengesAPI {
     }
 
     @Override
-    public Map<Tier, Double> getPercentileOfChallenge(Platform platform, long challengeId) {
+    public Map<Level, Double> getPercentileOfChallenge(Platform platform, long challengeId) {
         return riotHttp.get(
                 platform.getPlatform(),
                 prefix + "/" + challengeId + "/percentiles",

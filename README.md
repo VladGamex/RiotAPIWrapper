@@ -38,7 +38,7 @@ See for reference: [Riot Games API](https://developer.riotgames.com/)
 | CHAMPION-V3         | done     |
 | CLASH-V1            | untested |
 | LEAGUE-V4           | done     |
-| LOL-CHALLENGES-V1   | untested |
+| LOL-CHALLENGES-V1   | done     |
 | LOL-STATUS-V4       | done     |
 | MATCH-V5            | untested |
 | SPECTATOR-V5        | untested |

@@ -1,10 +1,10 @@
 package internal;
 
+import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.JavaType;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.*;
+import com.fasterxml.jackson.databind.deser.DeserializationProblemHandler;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
@@ -25,7 +25,27 @@ public class RiotHttp {
     public RiotHttp(@NotNull String apiKey) {
         httpClient = HttpClient.newHttpClient();
         this.apiKey = apiKey;
-        mapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+
+        mapper = new ObjectMapper();
+        mapper.findAndRegisterModules();
+
+        mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+        mapper.configure(MapperFeature.ACCEPT_CASE_INSENSITIVE_PROPERTIES, true);
+
+        mapper.addHandler(new DeserializationProblemHandler() {
+            @Override
+            public boolean handleUnknownProperty(DeserializationContext ctxt, JsonParser p,
+                                                 JsonDeserializer<?> deserializer,
+                                                 Object beanOrClass, String propertyName) throws IOException {
+                // KEINE Reflection-Abfrage (.isRecord()) mehr!
+                // Nur ein extrem schnelles System.out, das kaum Performance kostet.
+                System.out.println("Riot API liefert ungenutztes Feld: [" + propertyName
+                        + "] in DTO: " + beanOrClass.getClass().getSimpleName());
+
+                p.skipChildren(); // Zwingt den Parser, das unbekannte Objekt/Feld sofort zu überspringen
+                return true;
+            }
+        });
     }
 
     public <T> T get(String host, String path, Class<T> type){
@@ -38,6 +58,7 @@ public class RiotHttp {
     public <T> T get(String host, String path, TypeReference<T> type) {
         return parse(send(host, path, Map.of()), mapper.constructType(type));
     }
+
 
     private <T> T parse(String response, JavaType type) {
         try {
