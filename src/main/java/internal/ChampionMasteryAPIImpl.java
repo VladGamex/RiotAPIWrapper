@@ -51,7 +51,7 @@ public class ChampionMasteryAPIImpl implements ChampionMasteryAPI {
     public int getSumOfMasteryPoints(Platform region, String encryptedPUUID) {
         return riotHttp.get(
                 region.getPlatform(),
-                prefix + "/scores/by-puuid/" + encryptedPUUID,
+                prefix + "scores/by-puuid/" + encryptedPUUID,
                 Integer.class);
     }
 }

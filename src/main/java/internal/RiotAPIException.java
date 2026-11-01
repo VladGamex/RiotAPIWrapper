@@ -31,7 +31,7 @@ public class RiotAPIException extends RuntimeException {
     public String getUri() {
         return uri;
     }
-    public String getMessage() {
+    public String getResponseBody() {
         return responseBody;
     }
 }

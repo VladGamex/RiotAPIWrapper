@@ -8,8 +8,8 @@ import api.match.dto.ReplayDTO;
 import api.match.dto.TimelineDto;
 import com.fasterxml.jackson.core.type.TypeReference;
 
-import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class MatchAPIImpl implements MatchAPI {
 
@@ -41,11 +41,12 @@ public class MatchAPIImpl implements MatchAPI {
     @Deprecated
     @Override
     public ReplayDTO getPlayerReplays(Region region, String bearerToken) {
+
         return riotHttp.get(
                 region.getHost(),
                 prefix + "/replays",
                 ReplayDTO.class,
-                new HashMap<>() {{put("Authorization", bearerToken);}}
+                Map.of("Authorization", bearerToken)
         );
     }
 

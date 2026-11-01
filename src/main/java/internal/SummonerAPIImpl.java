@@ -4,7 +4,7 @@ import api.data.Platform;
 import api.summoner.SummonerAPI;
 import api.summoner.dto.SummonerDTO;
 
-import java.util.HashMap;
+import java.util.Map;
 
 public class SummonerAPIImpl implements SummonerAPI {
     private final RiotHttp riotHttp;
@@ -29,7 +29,7 @@ public class SummonerAPIImpl implements SummonerAPI {
                 platform.getPlatform(),
                 prefix + "/me",
                 SummonerDTO.class,
-                new HashMap<>() {{put("Authorization", bearerToken);}}
+                Map.of("Authorization", bearerToken)
         );
     }
 }

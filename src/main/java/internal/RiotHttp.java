@@ -13,7 +13,6 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Logger;
 
@@ -26,6 +25,11 @@ public class RiotHttp {
     private final Logger logger = Logger.getLogger(this.getClass().getName());
 
     public RiotHttp(@NotNull String apiKey) {
+        if (apiKey == null || apiKey.isBlank()) {
+            throw new IllegalArgumentException(
+                    "API key must not be null or blank"
+            );
+        }
         httpClient = HttpClient.newHttpClient();
         this.apiKey = apiKey;
 
@@ -53,7 +57,7 @@ public class RiotHttp {
     public <T> T get(String host, String path, Class<T> type){
         return parse(send(host, path, Map.of()), mapper.constructType(type));
     }
-    public <T> T get(String host, String path, Class<T> type, HashMap<String, String> headers){
+    public <T> T get(String host, String path, Class<T> type, Map<String, String> headers){
         return parse(send(host, path, headers), mapper.constructType(type));
     }
 
