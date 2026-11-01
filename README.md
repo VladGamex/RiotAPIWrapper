@@ -40,9 +40,9 @@ See for reference: [Riot Games API](https://developer.riotgames.com/)
 | LEAGUE-V4           | done     |
 | LOL-CHALLENGES-V1   | done     |
 | LOL-STATUS-V4       | done     |
-| MATCH-V5            | untested |
+| MATCH-V5            | done     |
 | SPECTATOR-V5        | untested |
-| SUMMONER-V4         | untested |
+| SUMMONER-V4         | done     |
 | TOURNAMENT-V5       | open     |
 | VALORANT-ENDPOINTS  | open     |
 | TFT-ENDPOINTS       | open     |

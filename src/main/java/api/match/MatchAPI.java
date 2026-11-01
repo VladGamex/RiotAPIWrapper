@@ -10,7 +10,7 @@ import java.util.List;
 public interface MatchAPI {
     List<String> getMatchHistory(Region region, String puuid);
     List<String> getMatchHistory(Region region, String puuid, ParamBuilder builder);
-    ReplayDTO getPlayerReplays(Region region, String puuid);
+    ReplayDTO getPlayerReplays(Region region, String bearerToken);
     MatchDto getMatch(Region region, String matchId);
     TimelineDto getMatchTimeline(Region region, String matchId);
 

@@ -15,12 +15,15 @@ import java.net.http.HttpResponse;
 import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Logger;
 
 public class RiotHttp {
 
     private final HttpClient httpClient;
     private final String apiKey;
     private final ObjectMapper mapper;
+
+    private final Logger logger = Logger.getLogger(this.getClass().getName());
 
     public RiotHttp(@NotNull String apiKey) {
         httpClient = HttpClient.newHttpClient();
@@ -37,12 +40,11 @@ public class RiotHttp {
             public boolean handleUnknownProperty(DeserializationContext ctxt, JsonParser p,
                                                  JsonDeserializer<?> deserializer,
                                                  Object beanOrClass, String propertyName) throws IOException {
-                // KEINE Reflection-Abfrage (.isRecord()) mehr!
-                // Nur ein extrem schnelles System.out, das kaum Performance kostet.
-                System.out.println("Riot API liefert ungenutztes Feld: [" + propertyName
-                        + "] in DTO: " + beanOrClass.getClass().getSimpleName());
-
-                p.skipChildren(); // Zwingt den Parser, das unbekannte Objekt/Feld sofort zu überspringen
+                String dto = beanOrClass instanceof Class<?> c
+                        ? c.getSimpleName()
+                        : beanOrClass.getClass().getSimpleName();
+                JsonNode value = p.readValueAsTree();
+                logger.warning(() -> "Unmapped field [" + propertyName + "] in " + dto + " = " + value);
                 return true;
             }
         });
@@ -64,13 +66,14 @@ public class RiotHttp {
         try {
             return mapper.readValue(response, type);
         } catch(JsonProcessingException e) {
-            throw new RuntimeException(e); //TODO: ExceptionType
+            throw new RiotAPIException("JSON Mapping failed",e);
         }
     }
 
     private String send(String host, String path, Map<String, String> headers) {
+        String uri = "https://" + host + path;
         HttpRequest.Builder requestBuilder = HttpRequest.newBuilder()
-                .uri(URI.create("https://" + host + path))
+                .uri(URI.create(uri))
                 .header("X-Riot-Token", apiKey)
                 .timeout(Duration.ofSeconds(15))
                 .GET();
@@ -78,21 +81,18 @@ public class RiotHttp {
             requestBuilder.header(header.getKey(), header.getValue());
         }
         HttpRequest request = requestBuilder.build();
+        HttpResponse<String> response;
         try {
+            response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
 
-            HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
-
-            if (response.statusCode() != 200) throw toException(response);
-
-            return response.body();
-
-        } catch (RiotAPIException | IOException | InterruptedException e) {
-            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RiotAPIException(uri, "Request failed", e);
+        } catch(InterruptedException e) {
+            Thread.currentThread().interrupt();
+            throw new RiotAPIException(uri, "Request interrupted", e);
         }
+        if (response.statusCode() != 200) throw new RiotAPIException(response.statusCode(), uri, response.body());
+        return response.body();
     }
 
-    private static RiotAPIException toException(HttpResponse<String> response) {
-
-        return new RiotAPIException();
-    }
 }

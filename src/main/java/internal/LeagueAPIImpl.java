@@ -39,6 +39,7 @@ public class LeagueAPIImpl implements LeagueAPI {
 
     @Override
     public Set<LeagueEntryDTO> getAllLeagueEntries(Platform platform, Queue queue, Tier tier, Division division) {
+        if(tier.compareTo(Tier.MASTER) <= 0) throw new IllegalArgumentException("Tier must be in range [IRON-DIAMOND]");
         return riotHttp.get(
                 platform.getPlatform(),
                 prefix + "entries/" + queue + "/" + tier + "/" + division,
@@ -48,6 +49,7 @@ public class LeagueAPIImpl implements LeagueAPI {
 
     @Override
     public Set<LeagueEntryDTO> getAllLeagueEntries(Platform platform, Queue queue, Tier tier, Division division, int page) {
+        if(tier.compareTo(Tier.MASTER) <= 0) throw new IllegalArgumentException("Tier must be in range [IRON-DIAMOND]");
         return riotHttp.get(
                 platform.getPlatform(),
                 prefix + "entries/" + queue + "/" + tier + "/" + division + "?page=" + page,

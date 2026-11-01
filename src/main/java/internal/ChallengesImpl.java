@@ -1,21 +1,24 @@
 package internal;
 
 import api.data.Platform;
-import api.data.Tier;
-import api.lolchallenges.Level;
 import api.lolchallenges.LeagueChallengesAPI;
+import api.lolchallenges.Level;
 import api.lolchallenges.dto.ApexPlayerInfoDto;
 import api.lolchallenges.dto.ChallengeConfigInfoDto;
 import api.lolchallenges.dto.PlayerInfoDto;
 import com.fasterxml.jackson.core.type.TypeReference;
 
+import java.util.EnumSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class ChallengesImpl implements LeagueChallengesAPI {
     private final RiotHttp riotHttp;
 
     private final String prefix = "/lol/challenges/v1/challenges";
+    private static final Set<Level> APEX = EnumSet.of(Level.MASTER, Level.GRANDMASTER, Level.CHALLENGER);
+
 
     public ChallengesImpl(RiotHttp riotHttp) {
         this.riotHttp = riotHttp;
@@ -50,8 +53,8 @@ public class ChallengesImpl implements LeagueChallengesAPI {
 
     @Override
     public List<ApexPlayerInfoDto> getTopPlayers(Platform platform, long challengeId, Level level) {
-        if(!level.equals(Level.MASTER) || !level.equals(Level.GRANDMASTER) || !level.equals(Level.CHALLENGER)) {
-            return null; // TODO: EXCEPTIONHANDLING
+        if (!APEX.contains(level)) {
+            throw new IllegalArgumentException("Invalid level: " + level + ", must be one of " + APEX);
         }
 
         return riotHttp.get(
@@ -63,9 +66,10 @@ public class ChallengesImpl implements LeagueChallengesAPI {
 
     @Override
     public List<ApexPlayerInfoDto> getTopPlayers(Platform platform, long challengeId, Level level, int limit) {
-        if(!level.equals(Level.MASTER) || !level.equals(Level.GRANDMASTER) || !level.equals(Level.CHALLENGER)) {
-            return null; // TODO: EXCEPTIONHANDLING
+        if (!APEX.contains(level)) {
+            throw new IllegalArgumentException("Invalid level: " + level + ", must be one of " + APEX);
         }
+
         return riotHttp.get(
                 platform.getPlatform(),
                 prefix + "/" + challengeId + "/leaderboards/by-level/" + level + "?limit=" + limit,
