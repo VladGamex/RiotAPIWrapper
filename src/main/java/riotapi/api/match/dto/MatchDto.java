@@ -1,0 +1,4 @@
+package riotapi.api.match.dto;
+
+public record MatchDto(MetadataDto metadata, InfoDto info) {
+}

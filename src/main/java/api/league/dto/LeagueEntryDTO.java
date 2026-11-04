@@ -1,5 +1,0 @@
-package api.league.dto;
-
-public record LeagueEntryDTO(String leagueId, String summonerId, String puuid, String queueType, String tier, String rank, int leaguePoints, int wins, int losses,
-                            boolean hotStreak, boolean veteran, boolean freshBlood, boolean inactive, MiniSeriesDTO miniSeries) {
-}

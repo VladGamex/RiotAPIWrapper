@@ -15,15 +15,16 @@ or JSON handling.
 ## Quick start
 
 ```java
-import api.RiotAPIClient;
-import api.account.dto.AccountDto;
-import api.data.Platform;
-import api.data.Region;
+import riotapi.api.RiotAPIClient;
+import riotapi.api.account.dto.AccountDto;
+import riotapi.api.data.Region;
 
 RiotAPI api = new RiotAPIClient(System.getenv("RIOT_API_KEY"));
 
 AccountDto account = api.account().getAccountByRiotID(Region.EUROPE, "Name", "TagLine");
-System.out.println(account.puuid());
+System.out.
+
+println(account.puuid());
 ```
 Never hardcode your API key. Use an environment variable or a config file that is not committed.
 
@@ -31,23 +32,23 @@ Never hardcode your API key. Use an environment variable or a config file that i
 
 See for reference: [Riot Games API](https://developer.riotgames.com/)
 
-| Section             | Status   |
-|---------------------|----------|
-| ACCOUNT-V1          | done     |
-| CHAMPION-MASTERY-V4 | done     |
-| CHAMPION-V3         | done     |
-| CLASH-V1            | untested |
-| LEAGUE-V4           | done     |
-| LOL-CHALLENGES-V1   | done     |
-| LOL-STATUS-V4       | done     |
-| MATCH-V5            | done     |
-| SPECTATOR-V5        | untested |
-| SUMMONER-V4         | done     |
-| TOURNAMENT-V5       | open     |
-| VALORANT-ENDPOINTS  | open     |
-| TFT-ENDPOINTS       | open     |
-| LOR-ENDPOINTS       | open     |
-| EXCEPTION-HANDLING  | planned  |
+| Section             | Status                |
+|---------------------|-----------------------|
+| ACCOUNT-V1          | done                  |
+| CHAMPION-MASTERY-V4 | done                  |
+| CHAMPION-V3         | done                  |
+| CLASH-V1            | untested              |
+| LEAGUE-V4           | done                  |
+| LOL-CHALLENGES-V1   | done                  |
+| LOL-STATUS-V4       | done                  |
+| MATCH-V5            | done                  |
+| SPECTATOR-V5        | untested              |
+| SUMMONER-V4         | done                  |
+| TOURNAMENT-V5       | open                  |
+| VALORANT-ENDPOINTS  | open                  |
+| TFT-ENDPOINTS       | open                  |
+| LOR-ENDPOINTS       | open                  |
+| EXCEPTION-HANDLING  | basic functionalities |
 
 - planned = next up
 - open = not started/decided
