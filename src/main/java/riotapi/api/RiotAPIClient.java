@@ -10,7 +10,6 @@ import riotapi.api.lolstatus.LeagueStatusAPI;
 import riotapi.api.match.MatchAPI;
 import riotapi.api.spectator.SpectatorAPI;
 import riotapi.api.summoner.SummonerAPI;
-import internal.*;
 import riotapi.internal.*;
 
 public class RiotAPIClient implements RiotAPI {

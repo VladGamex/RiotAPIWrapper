@@ -6,7 +6,7 @@
 
     <groupId>de.vlad</groupId>
     <artifactId>riot-api-wrapper</artifactId>
-    <version>0.1.0-SNAPSHOT</version>
+    <version>0.1.1</version>
     <name>Riot API Wrapper</name>
     <description>Java wrapper for the Riot Games API</description>
 
@@ -28,6 +28,17 @@
             <scope>provided</scope>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.13.0</version>
+            </plugin>
+        </plugins>
+    </build>
+
     <licenses>
         <license>
             <name>MIT License</name>
